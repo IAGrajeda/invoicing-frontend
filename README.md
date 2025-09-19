@@ -1,69 +1,27 @@
-# React + TypeScript + Vite
+# Frontend Developer Challenge — Invoicing Module (Softwareland)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Demo
+- **Live**: 
 
-Currently, two official plugins are available:
+## Stack
+React + Vite + TypeScript · CoreUI (Free) · Zustand · Formik + Yup · AG Grid · PapaParse (CSV) · Storybook
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Scripts
+npm run dev       # desarrollo
+npm run build     # compilar
+npm run preview   # previsualizar build
+npm run storybook # UI de componentes
 
-## Expanding the ESLint configuration
+Estructura
+src/
+  components/ (InvoiceTable, InvoiceForm, CSVImportModal, Layout)
+  pages/ (InvoicesPage)
+  store/ (useInvoices.ts)
+  data/ (seed.ts)
+  utils/ (format.ts, csv.ts)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Funcionalidad
+Tabla con AG Grid: sort + filtros por estado y rango de fechas.
+Formulario (Formik + Yup) en modal CoreUI: crea facturas (Zustand).
+Importación CSV (PapaParse) con previsualización y merge por number.
+Storybook: InvoiceForm, InvoiceTable
