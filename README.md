@@ -1,7 +1,7 @@
 # Frontend Developer Challenge — Invoicing Module
 
 ## Demo
-- **Live**:
+**Live**:
 - https://invoicing-frontend.vercel.app/
 - https://invoicing-frontend.netlify.app/
 
