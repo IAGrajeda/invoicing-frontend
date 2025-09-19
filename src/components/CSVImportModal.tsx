@@ -76,7 +76,7 @@ export default function CSVImportModal({
   return (
     <CModal visible={visible} onClose={onClose} alignment="center">
       <CModalHeader closeButton>
-        <CModalTitle>Importar CSV</CModalTitle>
+        <CModalTitle>Import CSV</CModalTitle>
       </CModalHeader>
       <CModalBody>
         <p className="mb-2">
