@@ -1,3 +1,14 @@
 @import "tailwindcss";
 
 
+/* Tus overrides para AG Grid (aplican al contenedor con .custom-ag) */
+.custom-ag {
+  /* Accent principal (focus, sort indicator, botones activos, etc.) */
+  --ag-alpine-active-color: #2A3F7D;
+
+  /* Ajustes opcionales de look & feel */
+  --ag-selected-row-background-color: #2A3F7D22;
+  --ag-row-hover-color: #2A3F7D11;
+  --ag-header-foreground-color: #1a1a1a;        /* texto del header (opcional) */
+  --ag-odd-row-background-color: #fafafa;       /* zebra (opcional) */
+}

@@ -45,50 +45,51 @@ export default function InvoicesPage() {
     );
 
     return (
-        <CContainer className="py-4">
+        <CContainer className="py-4 ">
             <CRow className="mb-3">
-                <div className="text-muted mb-2">
-                    Invoices loaded: {useInvoices.getState().invoices.length}
+               
+                <div className='row '>
+                    <CCol md={2}>
+                        <label className="form-label">Status</label>
+                        <CFormSelect
+                            value={filter.status ?? 'All'}
+                            onChange={(e) => setFilter({ status: e.target.value as any })}
+                        >
+                            <option value="All">All</option>
+                            <option value="Paid">Paid</option>
+                            <option value="Unpaid">Unpaid</option>
+                        </CFormSelect>
+                    </CCol>
+                    <CCol md={2}>
+                        <label className="form-label">From</label>
+                        <CFormInput
+                            type="date"
+                            value={filter.dateFrom ?? ''}
+                            onChange={(e) => setFilter({ dateFrom: e.target.value || undefined })}
+                        />
+                    </CCol>
+                    <CCol md={2}>
+                        <label className="form-label">To</label>
+                        <CFormInput
+                            type="date"
+                            value={filter.dateTo ?? ''}
+                            onChange={(e) => setFilter({ dateTo: e.target.value || undefined })}
+                        />
+                    </CCol>
+                    <CCol md={5} className="d-flex align-items-end justify-content-end gap-2">
+                        <CButton color="primary" onClick={() => setOpen(true)}>New Invoice</CButton>
+                        <CButton color="secondary" className='' variant="outline" disabled={!canClear} onClick={() => clearFilter()}>
+                            Clear Filter
+                        </CButton>
+                        <CButton color="info" variant="outline" onClick={() => setOpenCsv(true)}>Import CSV</CButton>
+                    </CCol>
                 </div>
-                <CCol md={2}>
-                    <label className="form-label">Status</label>
-                    <CFormSelect
-                        value={filter.status ?? 'All'}
-                        onChange={(e) => setFilter({ status: e.target.value as any })}
-                    >
-                        <option value="All">All</option>
-                        <option value="Paid">Paid</option>
-                        <option value="Unpaid">Unpaid</option>
-                    </CFormSelect>
-                </CCol>
-                <CCol md={2}>
-                    <label className="form-label">From</label>
-                    <CFormInput
-                        type="date"
-                        value={filter.dateFrom ?? ''}
-                        onChange={(e) => setFilter({ dateFrom: e.target.value || undefined })}
-                    />
-                </CCol>
-                <CCol md={2}>
-                    <label className="form-label">To</label>
-                    <CFormInput
-                        type="date"
-                        value={filter.dateTo ?? ''}
-                        onChange={(e) => setFilter({ dateTo: e.target.value || undefined })}
-                    />
-                </CCol>
-                <CCol md={3} className="d-flex align-items-end gap-2">
-                    <CButton color="primary" onClick={() => setOpen(true)}>New Invoice</CButton>
-                    <CButton color="secondary" variant="outline" disabled={!canClear} onClick={() => clearFilter()}>
-                        Limpiar filtros
-                    </CButton>
-                    <CButton color="info" variant="outline" onClick={() => setOpenCsv(true)}>Importar CSV</CButton>
-                </CCol>
+
             </CRow>
             <CCard>
                 <CModal visible={open} onClose={() => setOpen(false)} alignment="center">
                     <CModalHeader closeButton>
-                        <CModalTitle>Nueva factura</CModalTitle>
+                        <CModalTitle>New invoice</CModalTitle>
                     </CModalHeader>
                     <CModalBody>
                         <InvoiceForm

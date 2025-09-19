@@ -6,8 +6,6 @@ import type { Invoice } from '../types';
 import { formatUSD, formatDate } from '../utils/format';
 
 // estilos AG Grid
-import 'ag-grid-community/styles/ag-grid.css';
-import 'ag-grid-community/styles/ag-theme-alpine.css';
 
 export default function InvoiceTable() {
   const invoices = useInvoices((s) => s.invoices);
@@ -23,13 +21,15 @@ export default function InvoiceTable() {
   }, [invoices, filter]);
 
   const columnDefs = useMemo<ColDef<Invoice>[]>(() => [
-    { headerName: 'Factura', field: 'number', sortable: true, filter: true, minWidth: 130 },
-    { headerName: 'Cliente', field: 'clientName', sortable: true, filter: true, flex: 1, minWidth: 220 },
-    { headerName: 'Fecha', field: 'date', sortable: true, minWidth: 140, valueFormatter: p => formatDate(String(p.value)) },
-    { headerName: 'Estado', field: 'status', sortable: true, minWidth: 120 },
-    { headerName: 'Monto (USD)', field: 'amount', sortable: true, minWidth: 160,
+    { headerName: 'Invoice', field: 'number', sortable: true, filter: true, minWidth: 130 },
+    { headerName: 'Client', field: 'clientName', sortable: true, filter: true, flex: 1, minWidth: 220 },
+    { headerName: 'Date', field: 'date', sortable: true, minWidth: 140, valueFormatter: p => formatDate(String(p.value)) },
+    { headerName: 'Status', field: 'status', sortable: true, minWidth: 120 },
+    {
+      headerName: 'Amount (USD)', field: 'amount', sortable: true, minWidth: 160,
       valueFormatter: (p) => formatUSD(Number(p.value)),
-      cellClass: 'ag-right-aligned-cell' },
+      cellClass: 'ag-right-aligned-cell'
+    },
   ], []);
 
   return (
@@ -37,7 +37,7 @@ export default function InvoiceTable() {
       <AgGridReact
         rowData={rowData}
         columnDefs={columnDefs}
-        animateRows
+        defaultColDef={{ resizable: true }}
       />
     </div>
   );
