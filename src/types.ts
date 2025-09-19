@@ -1,4 +1,4 @@
-//creacion del tipo de factura
+// Invoice type definitions
 
 export type InvoiceStatus = 'Paid' | 'Unpaid';
 

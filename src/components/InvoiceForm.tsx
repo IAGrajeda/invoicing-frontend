@@ -41,7 +41,7 @@ function nextInvoiceNumber(existing: Invoice[]) {
   return `INV-${String(next).padStart(4, '0')}`;
 }
 
-export default function InvoiceForm({ onSubmitted }: { onSubmitted?: () => void }) {
+export default function InvoiceForm({ onSubmitted, onCreated }: { onSubmitted?: () => void; onCreated?: (inv: Invoice) => void }) {
   const add = useInvoices(s => s.add);
 
   return (
@@ -59,6 +59,7 @@ export default function InvoiceForm({ onSubmitted }: { onSubmitted?: () => void 
           amount: Number(values.amount),
         };
         add(inv);
+        onCreated?.(inv);
         resetForm();
         onSubmitted?.();
       }}
