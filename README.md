@@ -1,7 +1,7 @@
-# Frontend Developer Challenge — Invoicing Module (Softwareland)
+# Frontend Developer Challenge — Invoicing Module
 
 ## Demo
-- **Live**: 
+- **Live**: https://invoicing-frontend.netlify.app/
 
 ## Stack
 React + Vite + TypeScript · CoreUI (Free) · Zustand · Formik + Yup · AG Grid · PapaParse (CSV) · Storybook
@@ -25,6 +25,8 @@ Tabla con AG Grid: sort + filtros por estado y rango de fechas.
 Formulario (Formik + Yup) en modal CoreUI: crea facturas (Zustand).
 Importación CSV (PapaParse) con previsualización y merge por number.
 Storybook: InvoiceForm, InvoiceTable
+
+
 
 CSV import funciona - Aqui la muestra para utilizar
 [invoices_sample.csv](https://github.com/user-attachments/files/22435618/invoices_sample.csv)
